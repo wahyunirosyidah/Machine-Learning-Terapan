@@ -109,17 +109,38 @@ Dataset berisi **7.043 baris dan 21 kolom**, dengan variabel target `Churn` yang
 
 ## Data Preparation
 
-1. **Handling Missing Values**  
-   Menghapus 11 nilai kosong pada kolom `TotalCharges`.
+1. **Encoding Categorical Variables**  
+   Menggunakan *One-Hot Encoding*
+   ```
+   data_baru = pd.get_dummies(data_baru, drop_first=True)
+   data_baru['Churn'] = data['Churn'].map({'Yes': 1, 'No': 0})
+   ```
 
-2. **Encoding Categorical Variables**  
-   Menggunakan *One-Hot Encoding* (`pd.get_dummies(drop_first=True)`).
-
-3. **Feature Scaling**  
-   Melakukan *standardization* pada fitur numerik (`tenure`, `MonthlyCharges`, `TotalCharges`) dengan **StandardScaler**.
-
-4. **Train-Test Split**  
-   Dataset dibagi menjadi 80% data latih dan 20% data uji (`stratify=y`, `random_state=123`).
+3. **Train-Test Split**  
+   Dataset dibagi menjadi 80% data latih dan 20% data uji
+   ```
+      X= data_baru.drop(['Churn'],axis=1)
+      y = data_baru["Churn"]
+      X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, stratify=y, random_state=123)
+   ```
+   | Jumlah Data | Train (80%) | Test (20%) |
+   |-------------|-------------|------------|
+   | 7032 | 6328 | 704 |
+   
+5. **Feature Scaling**  
+   Melakukan *standardization* pada fitur numerik dengan **StandardScaler**
+   ```
+      data_numerik = X_train.select_dtypes(include=np.number).columns
+      
+      scaler = StandardScaler()
+      scaler.fit(X_train[data_numerik])
+      
+      X_train_scaled = X_train.copy()
+      X_test_scaled = X_test.copy()
+      
+      X_train_scaled[data_numerik] = scaler.transform(X_train[data_numerik])
+      X_test_scaled[data_numerik] = scaler.transform(X_test[data_numerik])
+   ```
 
 ---
 
