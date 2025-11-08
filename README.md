@@ -86,6 +86,7 @@ Dataset berisi **7.043 baris dan 21 kolom**, dengan variabel target `Churn` yang
 1. **Hubungan Fitur Numerik dengan Churn**
    
    <img width="741" height="741" alt="image" src="https://github.com/user-attachments/assets/27de27ac-1db3-43c9-8df2-83a06df61f48" />
+   
    - `Tenure` berhubungan negatif terhadap churn: semakin lama berlangganan, semakin kecil kemungkinan berhenti.  
    - `MonthlyCharges` berbanding lurus dengan churn: semakin tinggi biaya bulanan, semakin besar kemungkinan churn.  
    - `TotalCharges` menunjukkan pelanggan dengan nilai tinggi lebih loyal.
