@@ -30,7 +30,7 @@ Dataset yang digunakan adalah **[Telco Customer Churn Dataset (Kaggle)](https://
 
 ### Goals
 1. Mengembangkan model *machine learning classification* untuk memprediksi churn.  
-2. Membandingkan performa tiga algoritma — **K-Nearest Neighbors (KNN)**, **Logistic Regression**, dan **XGBoost**.  
+2. Membandingkan performa tiga algoritma: **K-Nearest Neighbors (KNN)**, **Logistic Regression**, dan **XGBoost**.  
 3. Menentukan model terbaik berdasarkan *accuracy* dan *F1-score* sebagai metrik utama.
 
 ### Solution Statements
@@ -84,15 +84,20 @@ Dataset berisi **7.043 baris dan 21 kolom**, dengan variabel target `Churn` yang
 ## Exploratory Data Analysis (EDA)
 
 1. **Hubungan Fitur Numerik dengan Churn**
+   <img width="741" height="741" alt="image" src="https://github.com/user-attachments/assets/27de27ac-1db3-43c9-8df2-83a06df61f48" />
    - `Tenure` berhubungan negatif terhadap churn: semakin lama berlangganan, semakin kecil kemungkinan berhenti.  
    - `MonthlyCharges` berbanding lurus dengan churn: semakin tinggi biaya bulanan, semakin besar kemungkinan churn.  
    - `TotalCharges` menunjukkan pelanggan dengan nilai tinggi lebih loyal.
 
-2. **Contract & Payment Method**
+3. **Contract & Payment Method**
+   <img width="768" height="432" alt="image" src="https://github.com/user-attachments/assets/4a1f52ab-ccd7-422e-a9a6-fdf96c168e79" />
+
    - Pelanggan dengan kontrak *Month-to-Month* dan pembayaran manual memiliki tingkat churn tertinggi (47%).  
    - Pelanggan dengan kontrak *Two Year* dan pembayaran otomatis memiliki tingkat churn terendah (sekitar 2–3%).
 
-3. **Distribusi Gender**
+5. **Distribusi Gender**
+   <img width="580" height="455" alt="image" src="https://github.com/user-attachments/assets/49019ac6-3bee-462f-bc97-927b9dcdbf71" />
+
    - Jumlah pelanggan pria dan wanita seimbang (Male: 3.549, Female: 3.483), menunjukkan layanan bersifat netral gender.
 
 ---
@@ -141,11 +146,11 @@ Tiga algoritma *machine learning* digunakan untuk memprediksi churn:
 
 ### Hasil Evaluasi Model
 
-| Model | Train Accuracy | Test Accuracy | Train F1 | Test F1 |
-|--------|----------------|----------------|-----------|----------|
-| KNN | 0.83 | 0.80 | 0.77 | 0.73 |
-| Logistic Regression | **1.00** | **1.00** | **1.00** | **1.00** |
-| XGBoost | **1.00** | **1.00** | **1.00** | **1.00** |
+| Model | Accuracy | Precision (Class 0) | Recall (Class 0) | F1-Score (Class 0) | Precision (Class 1) | Recall (Class 1) | F1-Score (Class 1) |
+|--------|-----------|---------------------|------------------|--------------------|----------------------|------------------|--------------------|
+| **KNN** | 0.96 | 0.95 | 0.99 | 0.97 | 0.97 | 0.87 | 0.92 |
+| **Logistic Regression** | **1.00** | **1.00** | **1.00** | **1.00** | **1.00** | **1.00** | **1.00** |
+| **XGBoost** | **1.00** | **1.00** | **1.00** | **1.00** | **1.00** | **1.00** | **1.00** |
 
 
 ---
