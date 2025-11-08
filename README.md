@@ -109,7 +109,7 @@ Dataset berisi **7.043 baris dan 21 kolom**, dengan variabel target `Churn` yang
 
 ## Data Preparation
 
-1. **Encoding Categorical Variables**  
+1. **Encoding Fitur Kategori**  
    Menggunakan *One-Hot Encoding*
    ```
    data_baru = pd.get_dummies(data_baru, drop_first=True)
@@ -127,7 +127,7 @@ Dataset berisi **7.043 baris dan 21 kolom**, dengan variabel target `Churn` yang
    |-------------|-------------|------------|
    | 7032 | 6328 | 704 |
    
-5. **Feature Scaling**  
+5. **Standarisasi**  
    Melakukan *standardization* pada fitur numerik dengan **StandardScaler**
    ```
       data_numerik = X_train.select_dtypes(include=np.number).columns
